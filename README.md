@@ -5,7 +5,7 @@ Repository ini berisi implementasi dan analisis FIR high-pass filter untuk sinya
 ## Isi Repository
 
 - `code_FIR.ipynb` - notebook utama untuk perancangan filter, visualisasi, dan validasi.
-- `Real Time.py` - skrip Python untuk filtering realtime dari port serial dan visualisasi FFT.
+- `code_live_fir.py` - skrip Python untuk filtering realtime dari port serial.
 - `Data_EMG/` - kumpulan data EMG dalam format CSV.
 - `inoriltime/inoriltime.ino` - sketch Arduino/ESP untuk sumber data serial.
 
@@ -55,29 +55,33 @@ Catatan: pada notebook terdapat path absolut untuk salah satu contoh file CSV. J
 ## Cara Menjalankan Realtime
 
 1. Pastikan perangkat pengirim data sudah aktif dan mengirimkan nilai EMG lewat serial.
-2. Sesuaikan parameter berikut di `Real Time.py` jika perlu:
+2. Sesuaikan parameter berikut di `code_live_fir.py` jika perlu:
    - `PORT` untuk port serial, misalnya `COM14`
    - `BAUD` sesuai baud rate perangkat
 3. Jalankan skrip:
 
 ```bash
-python "Real Time.py"
+python code_live_fir.py
 ```
 
-Skrip ini akan membaca data serial, menerapkan FIR high-pass secara streaming, lalu menampilkan perbandingan FFT sebelum dan sesudah filter.
+Skrip ini membaca data serial, menerapkan FIR high-pass secara streaming, lalu menampilkan sinyal raw dan hasil filter secara realtime.
 
 ## Output yang Diharapkan
 
 - Plot sinyal EMG mentah dan hasil filtering.
 - Plot respon frekuensi filter FIR.
 - Perbandingan spektrum sebelum dan sesudah filtering.
-- Visualisasi realtime FFT untuk data serial masuk.
+- Visualisasi realtime sinyal masuk dan hasil filtering.
 
 ## Catatan Teknis
 
 - Koefisien filter di notebook dihitung secara manual agar proses desain lebih transparan.
 - Skrip realtime menggunakan buffer melingkar dan thread pembaca serial agar visualisasi tetap responsif.
 - Jika data serial berhenti masuk, pastikan format data yang dikirim adalah angka per baris.
+
+## Struktur Data
+
+Folder `Data_EMG/` berisi beberapa contoh file CSV hasil akuisisi. Notebook menggunakan salah satu file sebagai contoh input untuk analisis dan validasi filter.
 
 ## Lisensi
 
