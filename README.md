@@ -85,4 +85,4 @@ Folder `Data_EMG/` berisi beberapa contoh file CSV hasil akuisisi. Notebook meng
 
 ## Lisensi
 
-Belum ada informasi lisensi pada repository ini.
+Proyek ini dibuat untuk keperluan pendidikan.
